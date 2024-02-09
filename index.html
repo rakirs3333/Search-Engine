@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  
+  <head>
+    <meta charset="utf-8" />
+      <link rel="stylesheet" href="./css/main.css"/>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <div class="bg-image"></div>
+    <div class="bg-text">
+      <div id="query_container">
+        <form id="query_form" action="{% url 'show' %}" method="post">
+          <!-- {% csrf_token %} -->
+          <div class="search-box">
+          <label style="margin:auto" for="qbox">Query: <input name="qbox" class="search_textbox" size="50" type="search" name="handle" value={{myQuery}}><br></label>
+         
+        </div>
+          <div class="pad_margin_5px">
+            <div class="selection" id="lucene">Lucene</div>
+            <div class="selection" id="bert">BERT</div>
+          </div>
+          
+        </form>
+      </div><!-- query_container -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<div class="scroll">
+  <!-- {% if flag %} -->
+  <ul id="score-list" style="max-height: 500px; overflow-y: scroll;">
+    <script id="score-template" type="text/x-handlebars-template">
+      {{#each scores}}
+      <li style="padding:5px;">
+        <p style="text-align:left;" ><a href="{{url}}">{{title}}</a></p>
+        <p style="text-align:justify; padding-bottom:5px">{{text}}</p>
+      </li>
+      {{/each}}
+    </script>
+    </ul>
+  <!-- {% endif %} -->
+  </div>
+      </div><!--results_container -->
+     </div> <!-- bg-text -->
+  </body>
+  <script type="text/javascript" src="./scripts/script.js"></script>
+</html>
+
+
